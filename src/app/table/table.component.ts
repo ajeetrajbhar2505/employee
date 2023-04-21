@@ -22,21 +22,25 @@ export class TableComponent {
       // Handle changes to the employeeData array
       this.filteredEmployeeData = [...this.employeeData]
 
-      const oldestEmployee = this.filteredEmployeeData.sort((a: any, b: any) => b.employee_age - a.employee_age)[0]
+      // Sort the employee data based on age.
+      const oldestEmployee = this.filteredEmployeeData.sort((a: any, b: any) => b.employee_age - a.employee_age)[0];
       const oldestAge = oldestEmployee.employee_age;
-      const agerangeDifference = 20
+      const agerangeDifference = 20;
       const agerangeSize = Math.ceil(oldestAge / agerangeDifference);
-
       for (let i = 0; i < agerangeSize; i++) {
-        let ageRangeStart = i * agerangeDifference + 1
-        let ageRangeEnd = (i + 1) * agerangeDifference
-        this.rangeData.push(`${ageRangeStart}-${ageRangeEnd}`)
+        let ageRangeStart = i * agerangeDifference + 1;
+        let ageRangeEnd = (i + 1) * agerangeDifference;
+        this.rangeData.push(`${ageRangeStart}-${ageRangeEnd}`);
       }
+
+      // Sort the employee data based on ID to view the data in ascending order.
+      this.filteredEmployeeData.sort((a: any, b: any) => a.id - b.id);
+
     }
   }
 
 
-  filterOrderBy(sortOrder:any) {
+  filterOrderBy(sortOrder: any) {
 
     this.toggleOrderByAscendingDescending = true
     if (sortOrder === 'asc') {
