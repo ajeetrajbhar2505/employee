@@ -20,7 +20,7 @@ export class TableComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes) {
       // Handle changes to the employeeData array
-      this.filteredEmployeeData = [...this.employeeData].sort((a: any, b: any) => a.id - b.id)
+      this.filteredEmployeeData = [...this.employeeData]
 
       const oldestEmployee = this.filteredEmployeeData.sort((a: any, b: any) => b.employee_age - a.employee_age)[0]
       const oldestAge = oldestEmployee.employee_age;
