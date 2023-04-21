@@ -14,7 +14,8 @@ export class TableComponent {
 
  
 
-
+//  data is fetched asynchronously from an API, child component is being rendered before the data is available,
+// To solve this, we can use the Angular ngOnChanges() 
   ngOnChanges(changes: SimpleChanges) {
     if (changes) {
       // Handle changes to the employeeData array
