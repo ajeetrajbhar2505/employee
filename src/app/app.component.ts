@@ -21,15 +21,17 @@ export class AppComponent implements OnInit {
   async getEmployeesData() {
     try {
       // const response: any = await this.http.get('https://dummy.restapiexample.com/api/v1/employees').toPromise();
+
+      // Commented out API call due to errors. Use this instead for testing.
       const response: any = await this.http.get('assets/employeesData.json').toPromise();
-      if (response.status == 'success') {
-        this.employeeData = response['data'];
+      if (response.status === 'success') {
+        this.employeeData = response.data;
       }
     } catch (error) {
       console.error(error);
     }
-
   }
+
 
 
 }
