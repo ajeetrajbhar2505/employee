@@ -10,6 +10,7 @@
                         <img src="assets/search.png" alt="" width="18px">
                     </span>
                 </div>
+                <div class="text-field">
                     <div class="toggle">
                         <div class="toggle-button">
                             <span (click)="filterOrderBy('asc')">ASC</span>
@@ -17,6 +18,8 @@
                             <button [class]="toggleOrderByAscendingDescending?'active':''"></button>
                           </div>
                         </div>
+                    <span class="floating-text" style="top:-18px">Salary ASC/DESC</span>
+                </div>
             
                 <div class="text-field">
                     <select name="" id="" (change)="filterRangeBy($event)">
