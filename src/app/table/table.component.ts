@@ -11,6 +11,7 @@ export class TableComponent {
   @Input() employeeData: any[] = []
   filteredEmployeeData: any[] = []
   rangeData: any[] = []
+  toggleOrderByAscendingDescending = false
 
 
 
@@ -35,8 +36,12 @@ export class TableComponent {
   }
 
 
-  filterOrderBy(event: any) {
-    let sortOrder = event.target.value
+  filterOrderBy(sortOrder:any) {
+
+    this.toggleOrderByAscendingDescending = true
+    if (sortOrder === 'asc') {
+      this.toggleOrderByAscendingDescending = false
+    }
     this.filteredEmployeeData = this.employeeData.sort((a: any, b: any) =>
       // ternary comparison
       sortOrder === 'asc' ? a.employee_salary - b.employee_salary : b.employee_salary - a.employee_salary
