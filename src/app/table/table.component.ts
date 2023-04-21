@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input ,SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -14,8 +14,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.filteredEmployeeData = [...this.employeeData]
-    const oldestEmployee:any = this.filteredEmployeeData.sort((a:any,b:any)=> b.employee_age - a.employee_age)[0]
+    const oldestEmployee = this.filteredEmployeeData.sort((a:any,b:any)=> b.employee_age - a.employee_age)[0]
     const oldestAge = oldestEmployee.employee_age;
     const agerangeDifference = 20
     const agerangeSize = Math.ceil(oldestAge / agerangeDifference);
@@ -27,6 +26,15 @@ export class TableComponent implements OnInit {
     }
 
   }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes) {
+      // Handle changes to the employeeData array
+    this.filteredEmployeeData = [...this.employeeData]
+  }
+  }
+  
 
   filterOrderBy(event: any) {
     let sortOrder = event.target.value
