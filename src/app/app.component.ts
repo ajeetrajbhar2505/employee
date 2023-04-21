@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     try {
       // const response: any = await this.http.get('https://dummy.restapiexample.com/api/v1/employees').toPromise();
 
-      // Commented out API call due to errors. Use this instead for testing.
+      // Commented out API call due to errors['too many attempts]. Use this instead for testing.
       const response: any = await this.http.get('assets/employeesData.json').toPromise();
       if (response.status === 'success') {
         this.employeeData = response.data;
