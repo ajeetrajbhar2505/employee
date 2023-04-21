@@ -42,6 +42,7 @@ export class TableComponent {
     );
   }
 
+  
   filterRangeBy(event: any) {
     let range = event.target.value;
     const [start, end] = range.split('-').map(Number);
