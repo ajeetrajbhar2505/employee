@@ -5,15 +5,20 @@ import { Component, OnInit, Input ,SimpleChanges} from '@angular/core';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
 
   searchEmployee = ""
   @Input() employeeData: any[] = []
   filteredEmployeeData:any[] =[]
   rangeData: any[] = []
 
-  ngOnInit(): void {
+ 
 
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes) {
+      // Handle changes to the employeeData array
+    this.filteredEmployeeData = [...this.employeeData].sort((a:any,b:any) => a.id - b.id)
     const oldestEmployee = this.filteredEmployeeData.sort((a:any,b:any)=> b.employee_age - a.employee_age)[0]
     const oldestAge = oldestEmployee.employee_age;
     const agerangeDifference = 20
@@ -24,14 +29,6 @@ export class TableComponent implements OnInit {
       let ageRangeEnd = (i + 1) * agerangeDifference
       this.rangeData.push(`${ageRangeStart}-${ageRangeEnd}`)
     }
-
-  }
-
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes) {
-      // Handle changes to the employeeData array
-    this.filteredEmployeeData = [...this.employeeData]
   }
   }
   

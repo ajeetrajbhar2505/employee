@@ -29,8 +29,6 @@ export class AppComponent implements OnInit {
       console.error(error);
     }
 
-    console.log(this.employeeData);
-
   }
 
 
