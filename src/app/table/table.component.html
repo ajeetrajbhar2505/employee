@@ -1,0 +1,43 @@
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" style="text-align: center">Employees</th>
+            <th colspan="4">
+                <div class="text-field">
+                    <input type="text" name="username" [(ngModel)]="searchEmployee">
+                    <span class="floating-text" style="display: flex; align-items: center; gap: 5px;">
+                        Search Employee
+                        <img src="assets/search.png" alt="" width="18px">
+                    </span>
+                </div>
+                <div class="text-field">
+                    <select name="" id="" (change)="filterOrderBy($event)" style="width:200px">
+                        <option value hidden selected>Select</option>
+                        <option value="asc">ASC</option>
+                        <option value="desc">DESC</option>
+                    </select>
+                    <span class="floating-text">Salary ASC/DESC</span>
+                </div>
+                <div class="text-field">
+                    <select name="" id="" (change)="filterRangeBy($event)">
+                        <option value hidden selected>Select</option>
+                        <option [value]="range" *ngFor="let range of rangeData">{{range}}</option>
+                    </select>
+                    <span class="floating-text">Filter Age Range</span>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th *ngFor="let header of filteredEmployeeData[0] | keyvalue">
+                <div class="th-w-img">{{header.key}} <li></li></div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of filteredEmployeeData | filterEmployee:searchEmployee">
+            <td *ngFor="let data of emp | keyvalue">{{data.value}}</td>
+        </tr>
+    </tbody>
+</table>
