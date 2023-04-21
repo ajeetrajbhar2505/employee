@@ -42,10 +42,7 @@ export class TableComponent {
 
   filterOrderBy(sortOrder: any) {
 
-    this.toggleOrderByAscendingDescending = true
-    if (sortOrder === 'asc') {
-      this.toggleOrderByAscendingDescending = false
-    }
+    this.toggleOrderByAscendingDescending = (sortOrder === 'desc');
     this.filteredEmployeeData = this.employeeData.sort((a: any, b: any) =>
       // ternary comparison
       sortOrder === 'asc' ? a.employee_salary - b.employee_salary : b.employee_salary - a.employee_salary
